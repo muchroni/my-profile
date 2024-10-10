@@ -1,0 +1,269 @@
+* {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            transition: all 0.3s ease;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            min-height: 100vh;
+            color: #333;
+            line-height: 1.6;
+            background: linear-gradient(180deg, #87CEEB 0%, #E0F6FF 100%);
+            overflow-x: hidden;
+        }
+
+        body.dark-mode {
+            background: linear-gradient(180deg, #0F2027 0%, #203A43 50%, #2C5364 100%);
+            color: #fff;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .profile-card {
+            background-color: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(5px);
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin-top: 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .dark-mode .profile-card {
+            background-color: rgba(45, 45, 45, 0.2);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+        }
+
+        .profile-image {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            margin: 0 auto 20px;
+            display: block;
+            border: 5px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+
+        h1 {
+
+            font-family: "Qwitcher Grypen", cursive;
+            font-weight: 700;
+            font-size: 3em;
+            font-style: normal;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
+        p {
+              font-family: "Qwitcher Grypen", cursive;
+              font-weight: 700;
+              font-style: normal;
+              font-size: 1.5em;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin: 20px 0;
+        }
+
+        .social-links a {
+            color: #333;
+            text-decoration: none;
+            font-size: 1.5em;
+            transition: transform 0.3s ease;
+        }
+
+        .social-links a:hover {
+            transform: translateY(-5px);
+        }
+
+        .social-links a:nth-child(2):hover{
+            color: #0077B5;
+        }
+
+        .social-links a:nth-child(4):hover{
+            color: #cd486b;
+        }
+
+        .dark-mode .social-links a {
+            color: #fff;
+        }
+
+        .theme-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 24px;
+            z-index: 1000;
+        }
+
+        /* Sky Elements */
+        .sky-elements {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .sun {
+            position: absolute;
+            top: 50px;
+            right: 100px;
+            width: 80px;
+            height: 80px;
+            background: #FFD700;
+            border-radius: 50%;
+            box-shadow: 0 0 50px #FFD700;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .cloud {
+            position: absolute;
+/*            background: white;*/
+/*            border-radius: 40px;*/
+            animation: float-cloud 15s linear infinite;
+        }
+
+        .cloud {
+    height: 100px; /* control the size */
+    aspect-ratio: 1.8;
+    --g: radial-gradient(50% 50%, #000 98%, #0000) no-repeat;
+    mask: var(--g) 100% 100%/30% 60%,var(--g) 70% 0/50% 100%,var(--g) 0 100%/36% 68%,var(--g) 27% 18%/26% 40%,linear-gradient(#000 0 0) bottom/67% 58% no-repeat;
+    background: white;
+}
+
+        .cloud:nth-child(1) {
+            top: 100px;
+            left: 20%;
+            width: 100px;
+            height: 40px;
+            animation-delay: 0s;
+        }
+
+        .cloud:nth-child(2) {
+            top: 150px;
+            left: 10%;
+            width: 160px;
+            height: 50px;
+            animation-delay: -5s;
+        }
+
+        .cloud:nth-child(3) {
+            top: 10px;
+            left: 1%;
+            width: 160px;
+            height: 50px;
+            animation-delay: -1s;
+        }
+
+        .cloud:nth-child(4) {
+            top: 50px;
+            left: 5%;
+            width: 160px;
+            height: 50px;
+            animation-delay: -5s;
+        }
+
+        .stars {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+
+        .dark-mode .stars {
+            opacity: 1;
+        }
+
+        .star {
+            position: absolute;
+            background: #fff;
+            border-radius: 50%;
+        }
+
+        .star.twinkle {
+            animation: twinkle 1.5s infinite ease-in-out;
+        }
+
+        .shooting-star {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: #fff;
+            border-radius: 50%;
+            animation: shoot 1s linear forwards;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        @keyframes float-cloud {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(calc(100vw + 100%)); }
+        }
+
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.2; }
+            50% { opacity: 1; }
+        }
+
+        @keyframes shoot {
+            0% {
+                transform: translateX(0) translateY(0);
+                opacity: 1;
+            }
+            100% {
+                transform: translateX(-200px) translateY(200px);
+                opacity: 0;
+            }
+        }
+
+        .dark-mode .sky-elements {
+            display: none;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 10px;
+            }
+
+            .profile-card {
+                padding: 20px;
+            }
+
+            .profile-image {
+                width: 120px;
+                height: 120px;
+            }
+
+            .sun {
+                width: 60px;
+                height: 60px;
+                right: 40px;
+            }
+        }
